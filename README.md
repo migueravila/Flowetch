@@ -6,10 +6,10 @@
 ### Installation
 
 1. Clone this repo with `git clone https://github.com/MiguelRAvila/aFetch.git`
-2. Run `cd aFetch`2
+2. Run `cd aFetch`
 3. Run `sudo make install`
 4. Now you can run it with `afetch` 
-5. ENJOY! 🚀
+5. ENJOY! 💻
 
 ### Customization
 
