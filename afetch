@@ -10,7 +10,7 @@ host="$(uname -n)"
 os="$PRETTY_NAME"
 
 # Get kernel from uname
-kernel="$(uname -r)"
+pkg="$(pacman -Qq | wc -l)"
 
 # Shell
 shell="${SHELL##*/}"
@@ -41,10 +41,10 @@ cat <<-EOF
 
     ${ARTR1}${user}${c0} in ${c2}${host}
     ${ARTR2}${c4}os${c0}      ${os}
-    ${ARTR3}${c4}kernel${c0}  ${kernel}
+    ${ARTR3}${c4}pkg${c0}     ${pkg}
     ${ARTR4}${c4}shell${c0}   ${shell}
     ${ARTR5}${c4}wm${c0}      ${wm}
     ${ARTR6}
-    ${ARTR7}${palette}
+    ${ARTR7}  ${palette}
 
 EOF
