@@ -1,5 +1,5 @@
 # aFetch
-> ### 💻 A Simple and Clean fetch for Arch Users
+> ### 💻 A personal Simple and Clean fetch 
 
 ![](https://github.com/MiguelRAvila/aFetch/blob/master/rsc/preview.png)
 
