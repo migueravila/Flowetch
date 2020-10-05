@@ -2,8 +2,8 @@ PREFIX?=/usr
 BIN?=$(PREFIX)/bin
 
 default:
-	@printf "Usage:\n\tmake install\tinstall ffetch\n\tmake uninstall\tuninstall ffetch\n"
+	@printf "Usage:\n\tmake install\tinstall cfetch\n\tmake uninstall\tuninstall cfetch\n"
 install:
-	install -Dm755 ffetch $(BIN)/ffetch
+	install -Dm755 cfetch $(BIN)/cfetch
 uninstall:
-	rm -f $(BIN)/ffetch
+	rm -f $(BIN)/cfetch
