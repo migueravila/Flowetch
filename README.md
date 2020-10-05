@@ -1,5 +1,6 @@
-# aFetch
-> ### 💻 A personal Simple and Clean fetch 
+<div align="center">
+<h1>CatFetch: 🐱 A personal Simple and Clean fetch </h1>
+</div>
 
 ![](https://github.com/MiguelRAvila/CatFetch/blob/master/rsc/preview.png)
 
@@ -15,4 +16,4 @@
 
 Work in progress
 
-> The cat name is Sakamoto
+> The cat name is Sakamoto 🐱
