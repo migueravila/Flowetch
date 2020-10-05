@@ -1,4 +1,4 @@
-# aFetch
+# CatFetch
 > ### 💻 A personal Simple and Clean fetch 
 
 ![](https://github.com/MiguelRAvila/CatFetch/blob/master/rsc/preview.png)
