@@ -19,7 +19,7 @@ pkg="$(pacman -Qq | wc -l)"
 shell="${SHELL##*/}"
 
 # Here you can write your wm or de
-wm="$(wmctrl -m | grep Name | cut -d: -f2)"
+wm="i3"
 
 #####################
 # Colors and palette 
@@ -47,10 +47,10 @@ cat <<-EOF
 
 
 
- ${ARTR1}${c3}${user}${c0} in ${c0}${host}
- ${ARTR2}${c3}shell${c0}  ${shell}
- ${ARTR3}${c3}wm${c0}     ${wm}
- ${ARTR4}${c3}term${c0}   ${term}
+ ${ARTR1}${c2}${user}${c0} in ${c4}${host}
+ ${ARTR2}${c2}shell${c0}  ${shell}
+ ${ARTR3}${c2}wm${c0}     ${wm}
+ ${ARTR4}${c2}term${c0}   ${term}
         
              ${palette}
 

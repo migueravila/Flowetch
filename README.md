@@ -1,7 +1,7 @@
 # aFetch
 > ### 💻 A personal Simple and Clean fetch 
 
-![](https://github.com/TezRyuga/FlowerFetch/blob/master/rsc/sample.png)
+![](https://github.com/MiguelRAvila/CatFetch/blob/master/rsc/preview.png)
 
 ### Installation
 
@@ -14,3 +14,5 @@
 ### Customization
 
 Work in progress
+
+> The cat name is Sakamoto
