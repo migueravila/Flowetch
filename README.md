@@ -2,7 +2,7 @@
 <h1>CatFetch: 🐱 A personal Simple and Clean fetch </h1>
 </div>
 
-![](https://github.com/MiguelRAvila/CatFetch/blob/master/rsc/preview.png)
+![](https://github.com/MiguelRAvila/CatFetch/blob/master/rsc/preview2.png)
 
 ### Installation
 
