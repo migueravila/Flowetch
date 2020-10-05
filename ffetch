@@ -1,6 +1,10 @@
 #! /bin/sh
 
-# FlowerFetch, based on mfetch by depsterr: https://github.com/depsterr/mfetch
+# CatFetch, based on mfetch by depsterr: https://github.com/depsterr/mfetch
+
+#####################
+# Info
+#####################
 
 # Get user 
 user="${USER-$(id -u -n)}"
