@@ -54,7 +54,7 @@ cat <<-EOF
  ${ARTR1}${c2}${user}${c0} in ${c4}${host}
  ${ARTR2}${c2}shell${c0}  ${shell}
  ${ARTR3}${c2}wm${c0}     ${wm}
- ${ARTR4}${c2}term${c0}   ${term}
+ ${ARTR4}${c2}pkg${c0}    ${pkg}
         
              ${palette}
 
