@@ -39,7 +39,7 @@ c9='^[[37m'
 
 palette="[7m$c1 $c1 $c2 $c2 $c3 $c3 $c4 $c4 $c5 $c5 $c6 $c6 [m"
 
-# Art based on https://asciiart.website/index.php?art=plants/flowers
+# Art based on https://www.asciiart.eu/animals/cats
 
 ARTR1="${c0}  \    /\    "
 ARTR2="${c0}   )  ( ')   "
