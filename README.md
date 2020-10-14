@@ -10,7 +10,7 @@
 
 ### Installation
 
-1. Clone this repo with `git clone https://github.com/TezRyuga/FlowerFetch.git`
+1. Clone this repo with `git clone https://github.com/MiguelRAvila/CatFetch.git`
 2. Run `cd CatFetch`
 3. Run `sudo make install`
 4. Now you can run it with `cfetch` 
