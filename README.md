@@ -26,14 +26,6 @@ This fetch Is thought to be used as a personal fetch and have your own fork of i
 - If you're on Debian based distros use: `dpkg -l | wc -l`
 - If you're on a Fedora based distro use: `rpm -qa | wc -l`
 
-##### WM or DE:
-
-In the code, I only added a variable so you can name your Desktop Enviroment (or Window Manager)
-
-```shell
-# Here you can write your wm or de
-wm="i3"
-```
 
 ##### Art:
 
