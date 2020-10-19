@@ -1,3 +1,4 @@
+
 #! /bin/sh
 
 # CatFetch, based on mfetch by depsterr: https://github.com/depsterr/mfetch
@@ -6,10 +7,10 @@
 # Info
 #####################
 
-# Get user 
+# Get user
 user="${USER-$(id -u -n)}"
 
-# Get host 
+# Get host
 host="$(uname -n)"
 
 # Get OS
@@ -21,12 +22,67 @@ pkg="$(pacman -Qq | wc -l)"
 
 # Shell
 shell="${SHELL##*/}"
+#Code yanked from fetcher
+# WM
+ # get display protocol
+  [ "$DISPLAY" ] && displayprot="x11"
+  [ "$WAYLAND_DISPLAY" ] && displayprot="wayland"
+  # fallback to tty if none is detected
+  [ ! "$displayprot" ] && displayprot="tty"
+  # get gtk theme
+  while read -r line; do
+    case $line in
+    gtk-theme*) theme=${line##*=} ;;
+    gtk-icon-theme*) icons=${line##*=} ;;
+    esac
+  done <"${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
+  # WMs/DEs
+  # usually set by GUI display managers and DEs
+  wm="$XDG_CURRENT_DESKTOP"
+  [ "$wm" ] || wm="$DESKTOP_SESSION"
 
-# Here you can write your wm or de
-wm="i3"
+  # for most WMs
+  [ ! "$wm" ] && [ "$DISPLAY" ] && command -v xprop >/dev/null && {
+    id=$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)
+    id=${id##* }
+    wm=$(xprop -id "$id" -notype -len 100 -f _NET_WM_NAME 8t |
+      grep '^_NET_WM_NAME' | cut -d\" -f 2)
+  }
 
+  # for non-EWMH WMs
+  [ ! "$wm" ] || [ "$wm" = "LG3D" ] &&
+    wm=$(
+      ps -e | grep -m 1 -o \
+        -e "sway" \
+        -e "kiwmi" \
+        -e "wayfire" \
+        -e "sowm" \
+        -e "catwm" \
+        -e "fvwm" \
+        -e "dwm" \
+        -e "2bwm" \
+        -e "monsterwm" \
+        -e "tinywm" \
+        -e "xmonad"
+    )
+
+  # get gtk theme
+  case $wm in
+  *GNOME*)
+    theme=$(dconf read /org/gnome/desktop/interface/gtk-theme | tr -d "'")
+    icons=$(dconf read /org/gnome/desktop/interface/icon-theme | tr -d "'")
+    ;;
+  *)
+    while read -r line; do
+      case $line in
+      gtk-theme*) theme=${line##*=} ;;
+      gtk-icon-theme*) icons=${line##*=} ;;
+      esac
+    done <"${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
+    ;;
+  esac
 #####################
-# Colors and palette 
+# Colors and palette
 #####################
 
 # Colors and palette method stolen from dylanaraps pftech: https://github.com/dylanaraps/pfetch
@@ -44,19 +100,14 @@ palette="[7m$c1 $c1 $c2 $c2 $c3 $c3 $c4 $c4 $c5 $c5 $c6 $c6 [m"
 ARTR1="${c0}  \    /\    "
 ARTR2="${c0}   )  ( ')   "
 ARTR3="${c0}  (  /  )    "
-ARTR4="${c0}   \(__)|    "  
+ARTR4="${c0}   \(__)|    "
 
 # Print
 cat <<-EOF
-
-
-
  ${ARTR1}${c2}${user}${c0} in ${c4}${host}
  ${ARTR2}${c2}shell${c0}  ${shell}
  ${ARTR3}${c2}wm${c0}     ${wm}
  ${ARTR4}${c2}pkg${c0}    ${pkg}
-        
+
              ${palette}
-
-
 EOF
