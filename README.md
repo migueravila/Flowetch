@@ -6,8 +6,14 @@
   </a>
 </p>
 
+## 👇 Index
+- [👇 Index](#-index)
+- [⚙️ Installation](#️-installation)
+- [🎨 Customization](#-customization)
+  - [📦 Packages](#-packages)
+  - [🖼️ Art](#️-art)
 
-### Installation
+## ⚙️ Installation
 
 1. Clone this repo with `git clone https://github.com/MiguelRAvila/CatFetch.git`
 2. Run `cd CatFetch`
@@ -15,24 +21,23 @@
 4. Now you can run it with `cfetch` 
 5. ENJOY! 💻
 
-### Customization
+## 🎨 Customization
 
 This fetch Is thought to be used as a personal fetch and have your own fork of it (That's why It doesn't work for all distros or have a lot of ASCII art)
 
-##### Packages:
+### 📦 Packages
 
 - The fetch is already configured for Arch Based distros: `pacman -Qq | wc -l`
 - If you're on Debian based distros use: `dpkg -l | wc -l`
 - If you're on a Fedora based distro use: `rpm -qa | wc -l`
 
-
-##### Art:
+### 🖼️ Art
 
 ```shell
-ARTR1="${c0}  \    /\    "
-ARTR2="${c0}   )  ( ')   "
-ARTR3="${c0}  (  /  )    "
-ARTR4="${c0}   \(__)|    "  
-
-#Is just a cat! (by Joan Stark)
+ARTR1="${c1}     _ _    "
+ARTR2="${c1}    (_\_)   "
+ARTR3="${c1}   (__<__)  "
+ARTR4="${c1}    (_/_)   "
+ARTR5="${c2}    \ |     "
+ARTR6="${c2}     \|/    "
 ```
