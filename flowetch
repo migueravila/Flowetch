@@ -114,7 +114,7 @@ cat <<-EOF
  ${ARTR2}  ${c5}user${c0}    ${c2}•••   ${user}
  ${ARTR3}  ${c5}shell${c0}   ${c3}•••   ${shell}
  ${ARTR4}  ${c5}wm${c0}      ${c4}•••   ${wm}
- ${ARTR5}  ${c5}up${c0}      ${c5}•••   ${uptime}h
+ ${ARTR5}  ${c5}theme${c0}   ${c5}•••   ${theme}
  ${ARTR6}  ${c5}pkg${c0}     ${c6}•••   ${pkg}
 
 EOF

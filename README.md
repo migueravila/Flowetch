@@ -1,12 +1,11 @@
-<div align="center">
-<h1>CatFetch: 🐱 A personal Simple and Clean fetch </h1>
-</div>
+![image](assets/header.png)
 
-<p align="center">
-  <img src="https://github.com/MiguelRAvila/CatFetch/blob/master/rsc/preview2.png">
+<p style="margin: -20px 0 30px">
+  <a href="https://www.buymeacoffee.com/migueravila" target="_blank" style='margin-right:0px; margin-top:5px'>
+    <img align="center" src="https://github.com/migueravila/Flowetch/blob/master/assets/donation.png" alt="donation" height="35px" />
+  </a>
 </p>
 
-> The cat name is Sakamoto 🐱
 
 ### Installation
 
