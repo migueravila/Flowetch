@@ -1,10 +1,15 @@
 #! /bin/sh
 
-# CatFetch, based on mfetch by depsterr: https://github.com/depsterr/mfetch
+# ┌─┐┬  ┌─┐┬ ┬┌─┐┌┬┐┌─┐┬ ┬
+# ├┤ │  │ ││││├┤  │ │  ├─┤
+# └  ┴─┘└─┘└┴┘└─┘ ┴ └─┘┴ ┴
 
 #####################
-# Info
+# Information
 #####################
+
+# Packages
+pkg="$(pacman -Qq | wc -l)"
 
 # Get user
 user="${USER-$(id -u -n)}"
@@ -18,9 +23,6 @@ os="$NAME"
 
 # Get uptime
 uptime="$(echo $(awk '{print $1}' /proc/uptime) / 3600 | bc)"
-
-# Packages (Pacman)
-pkg="$(pacman -Qq | wc -l)"
 
 # Shell
 shell="${SHELL##*/}"
@@ -83,11 +85,11 @@ case $wm in
   done <"${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
   ;;
 esac
+
 #####################
-# Colors and palette
+# Colors
 #####################
 
-# Colors and palette method stolen from dylanaraps pftech: https://github.com/dylanaraps/pfetch
 c0='[0m'
 c1='[31m'
 c2='[32m'
@@ -99,6 +101,10 @@ c7='[37m'
 c8='[38m'
 c9='^[[37m'
 
+#####################
+# Art
+#####################
+
 ARTR1="${c1}     _ _    "
 ARTR2="${c1}    (_\_)   "
 ARTR3="${c1}   (__<__)  "
@@ -106,7 +112,9 @@ ARTR4="${c1}    (_/_)   "
 ARTR5="${c2}    \ |     "
 ARTR6="${c2}     \|/    "
 
-# Main print
+#####################
+# Main Print
+#####################
 
 cat <<-EOF
 
