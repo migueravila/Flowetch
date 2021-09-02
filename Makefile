@@ -2,8 +2,8 @@ PREFIX?=/usr
 BIN?=$(PREFIX)/bin
 
 default:
-	@printf "Usage:\n\tmake install\tinstall cfetch\n\tmake uninstall\tuninstall cfetch\n"
+	@printf "Usage:\n\tmake install\tinstall flowetch\n\tmake uninstall\tuninstall flowetch\n"
 install:
-	install -Dm755 cfetch $(BIN)/cfetch
+	install -Dm755 flowetch $(BIN)/flowetch
 uninstall:
-	rm -f $(BIN)/cfetch
+	rm -f $(BIN)/flowetch

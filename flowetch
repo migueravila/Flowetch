@@ -1,0 +1,120 @@
+#! /bin/sh
+
+# CatFetch, based on mfetch by depsterr: https://github.com/depsterr/mfetch
+
+#####################
+# Info
+#####################
+
+# Get user
+user="${USER-$(id -u -n)}"
+
+# Get host
+host="$(uname -n)"
+
+# Get OS
+. /etc/os-release # load lib
+os="$NAME"
+
+# Get uptime
+uptime="$(echo $(awk '{print $1}' /proc/uptime) / 3600 | bc)"
+
+# Packages (Pacman)
+pkg="$(pacman -Qq | wc -l)"
+
+# Shell
+shell="${SHELL##*/}"
+#Code yanked from fetcher
+# WM
+# get display protocol
+[ "$DISPLAY" ] && displayprot="x11"
+[ "$WAYLAND_DISPLAY" ] && displayprot="wayland"
+# fallback to tty if none is detected
+[ ! "$displayprot" ] && displayprot="tty"
+# get gtk theme
+while read -r line; do
+  case $line in
+  gtk-theme*) theme=${line##*=} ;;
+  gtk-icon-theme*) icons=${line##*=} ;;
+  esac
+done <"${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
+# WMs/DEs
+# usually set by GUI display managers and DEs
+wm="$XDG_CURRENT_DESKTOP"
+[ "$wm" ] || wm="$DESKTOP_SESSION"
+
+# for most WMs
+[ ! "$wm" ] && [ "$DISPLAY" ] && command -v xprop >/dev/null && {
+  id=$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)
+  id=${id##* }
+  wm=$(xprop -id "$id" -notype -len 100 -f _NET_WM_NAME 8t |
+    grep '^_NET_WM_NAME' | cut -d\" -f 2)
+}
+
+# for non-EWMH WMs
+[ ! "$wm" ] || [ "$wm" = "LG3D" ] &&
+  wm=$(
+    ps -e | grep -m 1 -o \
+      -e "sway" \
+      -e "kiwmi" \
+      -e "wayfire" \
+      -e "sowm" \
+      -e "catwm" \
+      -e "fvwm" \
+      -e "dwm" \
+      -e "2bwm" \
+      -e "monsterwm" \
+      -e "tinywm" \
+      -e "xmonad"
+  )
+
+# get gtk theme
+case $wm in
+*GNOME*)
+  theme=$(dconf read /org/gnome/desktop/interface/gtk-theme | tr -d "'")
+  icons=$(dconf read /org/gnome/desktop/interface/icon-theme | tr -d "'")
+  ;;
+*)
+  while read -r line; do
+    case $line in
+    gtk-theme*) theme=${line##*=} ;;
+    gtk-icon-theme*) icons=${line##*=} ;;
+    esac
+  done <"${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
+  ;;
+esac
+#####################
+# Colors and palette
+#####################
+
+# Colors and palette method stolen from dylanaraps pftech: https://github.com/dylanaraps/pfetch
+c0='[0m'
+c1='[31m'
+c2='[32m'
+c3='[33m'
+c4='[34m'
+c5='[35m'
+c6='[36m'
+c7='[37m'
+c8='[38m'
+c9='^[[37m'
+
+ARTR1="${c1}     _ _    "	 
+ARTR2="${c1}    (_\_)   "
+ARTR3="${c1}   (__<__)  "
+ARTR4="${c1}    (_/_)   "
+ARTR5="${c2}    \ |     "
+ARTR6="${c2}     \|/    "
+
+# Main print
+
+cat <<-EOF
+
+ ${ARTR1}  ${c5}host${c0}    ${c1}•••   ${host}
+ ${ARTR2}  ${c5}user${c0}    ${c2}•••   ${user}
+ ${ARTR3}  ${c5}shell${c0}   ${c3}•••   ${shell}
+ ${ARTR4}  ${c5}wm${c0}      ${c4}•••   ${wm}
+ ${ARTR5}  ${c5}up${c0}      ${c5}•••   ${uptime}h
+ ${ARTR6}  ${c5}pkg${c0}     ${c6}•••   ${pkg}
+
+EOF
