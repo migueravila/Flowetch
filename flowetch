@@ -10,10 +10,10 @@
 
 # Packages
 
-if command -v pacman &> /dev/null
+if command -v pacman 
 then
   pkg="$(pacman -Qq | wc -l)"
-elif  command -v dpkg &> /dev/null
+elif  command -v dpkg 
 then
   pkg="$(dpkg -l | wc -l)"
 else
