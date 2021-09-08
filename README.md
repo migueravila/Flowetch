@@ -10,7 +10,6 @@
 - [👇 Index](#-index)
 - [⚙️ Installation](#️-installation)
 - [🎨 Customization](#-customization)
-  - [📦 Packages](#-packages)
   - [🖼️ Art](#️-art)
 
 ## ⚙️ Installation
@@ -23,12 +22,6 @@
 ## 🎨 Customization
 
 This fetch Is thought to be used as a personal fetch and have your own fork of it (That's why It doesn't work for all distros or have a lot of ASCII art)
-
-### 📦 Packages
-
-- The fetch is already configured for Arch Based distros: `pacman -Qq | wc -l`
-- If you're on Debian based distros use: `dpkg -l | wc -l`
-- If you're on a Fedora based distro use: `rpm -qa | wc -l`
 
 ### 🖼️ Art
 
