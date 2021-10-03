@@ -16,6 +16,9 @@ then
 elif  command -v dpkg >/dev/null
 then
   pkg="$(dpkg -l | wc -l)"
+elif  command -v emerge >/dev/null
+then
+  pkg="$(cd /var/db/pkg/ && ls -d */* | wc -l)"
 elif  command -v xbps-query >/dev/null
 then
     pkg="$(xbps-query -l | wc -l)"
