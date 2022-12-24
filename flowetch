@@ -4,10 +4,6 @@
 # ├┤ │  │ ││││├┤  │ │  ├─┤
 # └  ┴─┘└─┘└┴┘└─┘ ┴ └─┘┴ ┴
 
-#####################
-# Information
-#####################
-
 # Packages
 
 if command -v pacman >/dev/null
@@ -39,17 +35,11 @@ uptime="$(echo $(awk '{print $1}' /proc/uptime) / 3600 | bc)"
 # Shell
 shell="${SHELL##*/}"
 
-#####################
-# Display protocol
-#####################
-
 [ "$DISPLAY" ] && displayprot="x11"
 [ "$WAYLAND_DISPLAY" ] && displayprot="wayland"
 [ ! "$displayprot" ] && displayprot="tty"
 
-#####################
 # GTK 3
-#####################
 
 while read -r line; do
   case $line in
@@ -58,16 +48,12 @@ while read -r line; do
   esac
 done <"${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
 
-#####################
 # GTK theme
-#####################
 
 wm="$XDG_CURRENT_DESKTOP"
 [ "$wm" ] || wm="$DESKTOP_SESSION"
 
-#####################
 # Window Manager
-#####################
 
 [ ! "$wm" ] && [ "$DISPLAY" ] && command -v xprop >/dev/null && {
   id=$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)
@@ -76,9 +62,7 @@ wm="$XDG_CURRENT_DESKTOP"
     grep '^_NET_WM_NAME' | cut -d\" -f 2)
 }
 
-#####################
 # For non-EWH WMs
-#####################
 
 [ ! "$wm" ] || [ "$wm" = "LG3D" ] &&
   wm=$(
@@ -96,9 +80,7 @@ wm="$XDG_CURRENT_DESKTOP"
       -e "xmonad"
   )
 
-#####################
 # GTK theme
-#####################
 
 case $wm in
 *GNOME*)
@@ -115,9 +97,7 @@ case $wm in
   ;;
 esac
 
-#####################
 # Colors
-#####################
 
 c0='[0m'
 c1='[31m'
@@ -130,9 +110,7 @@ c7='[37m'
 c8='[38m'
 c9='^[[37m'
 
-#####################
 # Art
-#####################
 
 ARTR1="${c1}     _ _    "
 ARTR2="${c1}    (_\_)   "
@@ -141,9 +119,7 @@ ARTR4="${c1}    (_/_)   "
 ARTR5="${c2}    \ |     "
 ARTR6="${c2}     \|/    "
 
-#####################
 # Main Print
-#####################
 
 cat <<-EOF
 
